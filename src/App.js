@@ -1,5 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+
+const giphy_secret_key = process.env.REACT_APP_GIPHY_KEY
+
+function retrieveData() {
+    console.log("retrieve data start")
+    axios.get('https://api.giphy.com/v1/gifs/trending', {
+      params: {
+        api_key: giphy_secret_key
+      }
+    }).then((response) => console.log(response.data)).catch((err)=> console.log(err.data));
+}
+
+retrieveData()
+
+console.log(process.env.REACT_APP_COUNT)
 
 function App() {
   return (
